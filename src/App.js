@@ -6,6 +6,12 @@ import { DISHES } from "./shared/dishes"
 import { Component } from "react";
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      dishes:DISHES
+    };
+  }
   render() {
 
     return (
@@ -15,7 +21,7 @@ class App extends Component {
             <NavbarBrand href="#">Restaurant Delicious</NavbarBrand>
           </div>
         </Navbar>
-        <Menu />
+        <Menu dishes={this.state.dishes} />
       </div>
     );
   }
