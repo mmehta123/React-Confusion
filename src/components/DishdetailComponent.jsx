@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardBody, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
-class Dishdetailcomponent extends React.Component {
 
+class Dishdetailcomponent extends React.Component {
     constructor() {
         super();
     }
@@ -9,57 +9,42 @@ class Dishdetailcomponent extends React.Component {
     cmt(dish) {
         if (dish != null) {
             return (
-                <ul className="list-group">
-                    <h3 className="offset-4 ">Comments</h3>
-                    {dish.map((item) => {
-                        return (
-                            <li className="list-group-item">
-                                <p>
-                                    {item.comment} <br />
-                                    --{item.author}, {(item.date).split("T")[0]}
-                                </p>
-                            </li>
-                        );
-                    })}
-                </ul>
+                <div className="container">
+                    <ul className="list-group">
+                        <h3 className="offset-4 ">Comments</h3>
+                        {dish.map((item) => {
+                            return (
+                                <li key={item.id} className="list-group-item">
+                                    <p>
+                                        {item.comment} <br />
+                                        --{item.author}, {(item.date).split("T")[0]}
+                                    </p>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
             )
         }
-
     }
 
     render() {
-        // const cmt = this.props.Dish.comments.map((item) => {
-        //     console.log(item.author)
-        //     return (
-        //         <ul key={item.id} className="list-group">
-        //             <li className="list-group-item">
-        //                 <p>
-        //                     {item.comment} <br />
-        //                     --{item.author}, {(item.date).split("T")[0]}
-        //                     {/*WE CAN ALSO USE:-  substr(0,10)  */}
-        //                 </p>
-        //             </li>
-        //         </ul>
-        //     );
-        // })
-
+        console.log(this.props.dish)
         return (
-            <div className="row p-2">
+            <div className="row pt-4 border">
                 <div className="col-12 col-md-6">
-                    <Card >
-                        <CardImg width="100%" src={this.props.Dish.image} />
+                    <Card className="border">
                         <CardBody>
+                            <CardImg width="100%" src={this.props.dish.image} />
                             <CardTitle>
-                                {this.props.Dish.name}
+                                {this.props.dish.name}
                             </CardTitle>
-                            <p>{this.props.Dish.description}</p>
+                            <p>{this.props.dish.description}</p>
                         </CardBody>
                     </Card>
                 </div>
-                <div className="col-12 col-md p-2">
-
-                    {this.cmt(this.props.Dish.comments)}
-                    {/* {cmt} */}
+                <div className="col-12 col-md-6 p-2">
+                    {this.cmt(this.props.dish.comments)}
                 </div>
             </div>
         );
