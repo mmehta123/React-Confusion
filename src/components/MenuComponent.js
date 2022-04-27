@@ -16,9 +16,6 @@ class Menu extends Component {
     renderDish(dish) {
         if (dish != null) {
             return (
-                //    <div>
-                //         {this.state.SelectedDish.name}
-                //    </div> 
                 <Dishdetailcomponent Dish={this.state.SelectedDish} />
             );
         }
