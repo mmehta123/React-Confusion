@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, CardBody, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
 class Dishdetailcomponent extends React.Component {
-    
-    constructor(){
+
+    constructor() {
         super();
     }
 
@@ -14,20 +14,43 @@ class Dishdetailcomponent extends React.Component {
     //         );
     //     })
     // }
-    
-    
+
+    //      renderComments(dish) {          //This is working properly how?not mine.
+    //     if (dish != null)
+    //       return (
+    //         <div>
+    //           <h4>Comments</h4>
+    //           <ul class="list-unstyled">
+    //             {dish.comments.map((comment) => {
+    //               return (
+    //                 <li>
+    //                   <p>{comment.comment}</p>
+    //                   <p>--{comment.author + " , " + new Date(comment.date)}</p>
+    //                 </li>
+    //               );
+    //             })}
+    //           </ul>
+    //         </div>
+    //       );
+    // }
+
+
     render() {
 
-        const cmt=this.props.Dish.comments.map((item)=>{
+        const cmt = this.props.Dish.comments.map((item) => {
             console.log(item.author)
             return (
-                <p tag="li" className="lead">
-                    {item.comment}<br/>
-                    --{item.author}, {(item.date).split("T")[0]}    
-                    {/*WE CAN ALSO USE:-  substr(0,10)  */}
-                    <hr />
-                </p>
-                );
+                <ul key={item.id} className="list-group">
+                    <li className="list-group-item">
+                        <p>
+                            {item.comment} <br />
+                            --{item.author}, {(item.date).split("T")[0]}
+                            {/*WE CAN ALSO USE:-  substr(0,10)  */}
+                        </p>
+                    </li>
+
+                </ul>
+            );
         })
 
         return (
@@ -43,10 +66,11 @@ class Dishdetailcomponent extends React.Component {
                         </CardBody>
                     </Card>
                 </div>
-                <div className="col-12 col-md p-2" list>
+                <div className="col-12 col-md p-2">
 
                     {/* {this.cmt(this.props.Dish.comments)} */}
-                        {cmt}
+                    {/* {this.renderComments(this.props.Dish.comments)} */}
+                    {cmt}
                 </div>
             </div>
         );
