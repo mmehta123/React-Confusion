@@ -1,13 +1,13 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import { Card, CardBody, CardImg, Breadcrumb,BreadcrumbItem  ,CardImgOverlay, CardTitle } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Card, CardBody, CardImg, Breadcrumb, BreadcrumbItem, CardImgOverlay, CardTitle } from "reactstrap";
 
-function Cmt({dish}) {
+function Cmt({ dish }) {
     if (dish != null) {
         return (
             <div className="row ">
+                <h3 className="offset-4 ">Comments</h3>
                 <ul className="list-group">
-                    <h3 className="offset-4 ">Comments</h3>
                     {dish.map((item) => {
                         return (
                             <li key={item.id} className="list-group-item">
@@ -24,9 +24,9 @@ function Cmt({dish}) {
     }
 }
 
-function RenderDish(props){
-    return(
-        <div className="col-12 col-md-6">
+function RenderDish(props) {
+    return (
+        <div className="col-12">
             <Card className="border">
                 <CardBody>
                     <CardImg width="100%" src={props.dish.image} />
@@ -40,25 +40,30 @@ function RenderDish(props){
     )
 }
 
-function Dishdetailcomponent (props) {
-        return (
-            <div className=" container row pt-4 border ml-auto mr-auto bg-warning">
-                <div className="row">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                        <Breadcrumb active>{props.dish.name}</Breadcrumb>
-                    </Breadcrumb>
-                    <div className="col-12">
-                        <h3>{props.dish.name}</h3>
-                        <hr />
-                    </div>
-                </div>
-                <RenderDish dish={props.dish}/>
-                <div className="col-12 col-md-6 p-2">
-                    <Cmt dish={props.comments}/>
+function Dishdetailcomponent(props) {
+    console.log(props.dish)
+    return (
+        <div className=" container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12  ">
+                    <h3>{props.dish.name}</h3>
+                    <hr />
                 </div>
             </div>
-        );
-    }
+            <div className="row pt-4 border ml-auto mr-auto bg-warning border-danger">
+                <div className="col-12 col-md-6">
+                    <RenderDish dish={props.dish} />
+                </div>
+                <div className="col-12 col-md mr-3 mb-2 ">
+                    <Cmt dish={props.comment} />
+                </div>
+            </div>
+        </div>
+    );
+}
 export default Dishdetailcomponent;
