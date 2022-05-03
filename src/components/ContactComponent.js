@@ -122,7 +122,7 @@ class Contact extends React.Component {
                 <div className='row row-content'>
                     <div className='col-12'>
                         <Form onSubmit={this.handleSubmit}>
-                            <FormGroup row md={9}>
+                            <FormGroup row >
                                 <Label for="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
                                     <Input type="text" value={this.state.firstname} placeholder="First Name"
@@ -135,7 +135,7 @@ class Contact extends React.Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label htmlFor="lastname" md={2}>Last Name</Label>
+                                <Label for="lastname" md={2}>Last Name</Label>
                                 <Col md={10}>
                                     <Input type="text" id="lastname" name="lastname"
                                         placeholder="Last Name"
@@ -143,7 +143,7 @@ class Contact extends React.Component {
                                         valid={errors.lastname === ''}
                                         invalid={errors.lastname !== ''}
                                         onBlur={this.handleBlur('lastname')}
-                                        onChange={this.handleInputChange} />
+                                        onChange={this.handleEvent} />
                                     <FormFeedback>{errors.lastname}</FormFeedback>
                                 </Col>
                             </FormGroup>
