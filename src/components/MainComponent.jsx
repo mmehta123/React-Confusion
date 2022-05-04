@@ -26,9 +26,9 @@ class Main extends React.Component {
     render() {
         const HomePage = () => {
             return (
-                <Home dish={this.props.state.dishes.filter((dish) => dish.featured)[0]}
-                    promotion={this.props.state.promotions.filter((promotion) => promotion.featured)[0]}
-                    leader={this.props.state.leaders.filter((leader) => leader.featured)[0]}
+                <Home dish={this.props.dishes.filter((dish) => dish.featured)[0]}
+                    promotion={this.props.promotions.filter((promotion) => promotion.featured)[0]}
+                    leader={this.props.leaders.filter((leader) => leader.featured)[0]}
                 />
             );
         }
@@ -37,8 +37,8 @@ class Main extends React.Component {
             console.log((match.params.dishId))
             const TempId = parseInt(match.params.dishId, 10)
             return (
-                <Dishdetailcomponent dish={this.props.state.dishes.filter((dish) => dish.id === TempId)[0]}
-                    comment={this.props.state.comments.filter((comment) => comment.dishId === TempId)}
+                <Dishdetailcomponent dish={this.props.dishes.filter((dish) => dish.id === TempId)[0]}
+                    comment={this.props.comments.filter((comment) => comment.dishId === TempId)}
                 />
 
             );
@@ -49,10 +49,10 @@ class Main extends React.Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
-                    <Route exact path='/menu' component={() => <Menu dishes={this.props.state.dishes} />} />
+                    <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
                     <Route path='/menu/:dishId' component={DishWithId} />
                     <Route exact path="/contactus" component={Contact} />
-                    <Route exact path="/aboutus" component={() => <About leaders={this.props.state.leaders.filter((leader) => leader.id >= 0)} />} />
+                    <Route exact path="/aboutus" component={() => <About leaders={this.props.leaders.filter((leader) => leader.id >= 0)} />} />
                     <Redirect to="/home" />
                 </Switch>
                 <Footer />
